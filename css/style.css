@@ -10,7 +10,10 @@
     --card-background: rgba(25, 23, 36, 0.8);
     --text-color: #fffffe;
     --text-light: #a7a9be;
+    --text-dark: #0f0e17;
     --accent-color: #ff8906;
+    --accent-color-light: #f9c22e;
+    --accent-color-rgb: 255, 137, 6;
     --accent-hover: #f9c22e;
     --secondary-color: #e53170;
     --tertiary-color: #7f5af0;
