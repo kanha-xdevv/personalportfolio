@@ -1,41 +1,51 @@
 import requests
 import os
+from PIL import Image
+from io import BytesIO
 
-def download_image(query, filename):
-    # Create images directory if it doesn't exist
-    if not os.path.exists('project_images'):
-        os.makedirs('project_images')
-    
-    # Format the search query
-    search_query = query.replace(' ', '+')
-    
-    # Using a placeholder API endpoint (in real use, you'd need a proper API key)
-    # This is just a demonstration script
-    try:
-        print(f"Searching for images related to: {query}")
-        # In a real implementation, you would use a proper image search API
-        # For demonstration, we'll just print what we're looking for
-        print(f"Would download image for {query} to {filename}")
-    except Exception as e:
-        print(f"Error downloading {query}: {e}")
+# Create project_images directory if it doesn't exist
+if not os.path.exists('project_images'):
+    os.makedirs('project_images')
 
-# Project names to search for
-projects = [
-    "Jarvis AI Assistant voice interface",
-    "Netflix Clone streaming website",
-    "Elegance Fashion E-commerce website",
-    "Pomodoro Timer productivity app",
-    "Disney Plus Clone streaming service",
-    "Instagram Clone social media app",
-    "VR Based Tour Website virtual reality",
-    "Interactive To-Do App task manager"
+# List of Free License Image URLs (from Pexels)
+image_urls = [
+    # 1. Jarvis AI Assistant (blue futuristic interface)
+    "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg",
+    # 2. Netflix Clone (streaming service interface)
+    "https://images.pexels.com/photos/4009409/pexels-photo-4009409.jpeg",
+    # 3. Elegance Fashion E-commerce (fashion shopping)
+    "https://images.pexels.com/photos/5872361/pexels-photo-5872361.jpeg",
+    # 4. Pomodoro Timer (productivity timer)
+    "https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg",
+    # 5. Disney+ Clone (entertainment streaming)
+    "https://images.pexels.com/photos/918281/pexels-photo-918281.jpeg",
+    # 6. Instagram Clone (social media interface)
+    "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg",
+    # 7. VR-Based Tour Website (VR headset)
+    "https://images.pexels.com/photos/8721318/pexels-photo-8721318.jpeg",
+    # 8. Interactive To-Do App (task manager)
+    "https://images.pexels.com/photos/6408282/pexels-photo-6408282.jpeg"
 ]
 
-# Download images for each project
-for i, project in enumerate(projects):
-    download_image(project, f"project_images/project_{i+1}.jpg")
+# Download each image
+for i, url in enumerate(image_urls):
+    try:
+        # Get image from URL
+        response = requests.get(url)
+        if response.status_code == 200:
+            # Open the image
+            img = Image.open(BytesIO(response.content))
+            
+            # Resize to a reasonable size for the portfolio
+            img = img.resize((800, int(800 * img.height / img.width)))
+            
+            # Save the image
+            output_path = f"project_images/project_{i+1}.jpg"
+            img.save(output_path)
+            print(f"Downloaded image {i+1} to {output_path}")
+        else:
+            print(f"Failed to download image {i+1}: HTTP {response.status_code}")
+    except Exception as e:
+        print(f"Error downloading image {i+1}: {e}")
 
-print("\nNote: This script is just a demonstration. In a real project:")
-print("1. You'd need to use a proper image search API with valid credentials")
-print("2. You'd need to handle copyright and licensing concerns")
-print("3. You'd need to add error handling and rate limiting")
+print("\nImage download complete. Images saved to project_images/ directory.")
