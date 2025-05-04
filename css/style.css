@@ -841,6 +841,10 @@ nav ul li a.active span {
     filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
 }
 
+.image-container::before, .image-container::after {
+    display: none;
+}
+
 .image-container::before {
     content: '';
     position: absolute;
@@ -879,48 +883,83 @@ nav ul li a.active span {
 .profile-photo {
     width: 100%;
     height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072');
+    background-image: url('https://img.freepik.com/premium-photo/work-online-vector-stock-illustration-abstract-contemporary-modern-trendy-doodle-style_1313853-135385.jpg?ga=GA1.1.608870753.1746347487&semt=ais_hybrid&w=740');
     background-size: cover;
     background-position: center;
     transition: var(--transition-slow);
-    border-radius: 60% 40% 30% 70% / 50% 40% 60% 50%;
+    border-radius: 20px;
     position: relative;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    transform: rotate(3deg);
-    border: 5px solid rgba(255, 255, 255, 0.1);
+    transform: rotate(0deg);
+    border: none;
 }
 
 .profile-photo::before {
     content: '';
     position: absolute;
-    top: -30px;
-    right: -30px;
-    width: 80%;
-    height: 80%;
-    border: 3px dashed rgba(127, 90, 240, 0.3);
-    border-radius: 60% 40% 50% 50% / 40% 50% 50% 60%;
-    animation: rotate 30s linear infinite reverse;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 137, 6, 0.4);
+    border-radius: 50%;
     z-index: -1;
+    animation: pulse-slow 3s ease-in-out infinite alternate;
 }
 
 .profile-photo::after {
     content: '';
     position: absolute;
     bottom: -20px;
-    left: -20px;
-    width: 70%;
-    height: 70%;
-    border: 3px dashed rgba(255, 137, 6, 0.3);
-    border-radius: 40% 60% 50% 50% / 60% 40% 50% 40%;
-    animation: rotate 20s linear infinite;
+    left: -10px;
+    width: 50px;
+    height: 30px;
+    background: rgba(127, 90, 240, 0.2);
+    border-radius: 50%;
     z-index: -1;
+    animation: pulse-slow 4s ease-in-out infinite alternate-reverse;
 }
 
 .profile-photo:hover {
-    transform: rotate(0deg) scale(1.05);
-    border-radius: 55% 45% 35% 65% / 45% 45% 55% 55%;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(127, 90, 240, 0.5);
-    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 137, 6, 0.3);
+}
+
+.doodle-element {
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 14px;
+    transform: rotate(-5deg);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    animation: float 5s ease-in-out infinite alternate;
+}
+
+.doodle-code {
+    top: 10%;
+    right: -20px;
+    color: #6b46c1;
+}
+
+.doodle-design {
+    bottom: 15%;
+    left: -15px;
+    color: #e53170;
+    transform: rotate(5deg);
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    100% {
+        transform: translateY(-10px) rotate(-2deg);
+    }
 }
 
 /* ===== ABOUT SECTION ===== */
