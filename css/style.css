@@ -692,6 +692,8 @@ nav ul li a.active span {
     gap: var(--spacing-xl);
     position: relative;
     z-index: 1;
+    padding: var(--spacing-lg) 0;
+    overflow: visible;
 }
 
 /* Create an abstract shape behind the home content */
@@ -715,7 +717,7 @@ nav ul li a.active span {
     right: -5%;
     width: 50%;
     height: 120%;
-    background: linear-gradient(225deg, rgba(229, 49, 112, 0.05) 0%, transparent 70%);
+    background: linear-gradient(225deg, rgba(127, 90, 240, 0.08) 0%, transparent 70%);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     z-index: -1;
     animation: morph 15s linear infinite alternate-reverse;
@@ -877,41 +879,44 @@ nav ul li a.active span {
 .profile-photo {
     width: 100%;
     height: 100%;
-    background-image: url('https://via.placeholder.com/500x600');
-    background-size: cover;
+    background-image: url('../images/3d-developer-illustration.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     transition: var(--transition-slow);
-    border-radius: 60% 40% 30% 70% / 50% 40% 60% 50%;
     position: relative;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    transform: rotate(3deg);
-    border: 5px solid rgba(255, 255, 255, 0.1);
+    transform: rotate(0deg) scale(1.1);
 }
 
 .profile-photo::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, rgba(255, 137, 6, 0.2), rgba(229, 49, 112, 0.2));
-    border-radius: inherit;
-    z-index: 1;
+    top: -30px;
+    right: -30px;
+    width: 80%;
+    height: 80%;
+    border: 3px dashed rgba(127, 90, 240, 0.3);
+    border-radius: 60% 40% 50% 50% / 40% 50% 50% 60%;
+    animation: rotate 30s linear infinite reverse;
+    z-index: -1;
 }
 
 .profile-photo::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(0deg, rgba(15, 14, 23, 0.4) 0%, rgba(15, 14, 23, 0) 50%);
-    border-radius: inherit;
-    z-index: 2;
+    bottom: -20px;
+    left: -20px;
+    width: 70%;
+    height: 70%;
+    border: 3px dashed rgba(255, 137, 6, 0.3);
+    border-radius: 40% 60% 50% 50% / 60% 40% 50% 40%;
+    animation: rotate 20s linear infinite;
+    z-index: -1;
 }
 
 .profile-photo:hover {
-    transform: rotate(0deg) scale(1.03);
-    border-radius: 55% 45% 35% 65% / 45% 45% 55% 55%;
+    transform: translateY(-10px) scale(1.05);
+    filter: drop-shadow(0 15px 30px rgba(127, 90, 240, 0.3));
 }
 
 /* ===== ABOUT SECTION ===== */
