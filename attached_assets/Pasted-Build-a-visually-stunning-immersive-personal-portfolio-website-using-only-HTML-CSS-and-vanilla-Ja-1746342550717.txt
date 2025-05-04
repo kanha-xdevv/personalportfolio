@@ -1,0 +1,107 @@
+Build a visually stunning, immersive personal portfolio website using only HTML, CSS, and vanilla JavaScript. The design should feel modern, premium, and artistic, merging dark mode aesthetics, glassmorphism, and smooth UI interactions, reflecting the sophistication of brands like Apple, the minimalism of GitHub, and the fluidity of underwater/jellyfish visuals.
+
+🎨 Visual Language & UI Style
+Dark theme only, with a rich palette of deep blues, purples, and neon accents.
+
+Use glassmorphism: blurred, semi-transparent backgrounds with frosted effects.
+
+Rounded corners, elegant shadows, soft glows — a tactile, "dome-like" UI feel.
+
+Motion-rich: Include ambient animations, floating SVG blobs, particle backgrounds, or subtle parallax.
+
+Loading screen animation that smoothly morphs into a minimal animated logo.
+
+Sleek, minimalist scrollbar, animated scroll-to-top button with hover bounce.
+
+🧭 Header & Navigation
+Custom, minimal animated logo (SVG-based), positioned top-left.
+
+Transparent navbar with frosted glass blur, fixed position.
+
+Navigation buttons should include icons + labels, using L-shaped hover underlines or slide-in lines.
+
+Smooth scroll-to-section behavior with active link highlights.
+
+🏠 Hero/Home Section
+Bold headline introducing your name and role with animated typography.
+
+Personal profile photo (masked with soft edges and subtle glow).
+
+CTA buttons: “Contact Me” and “Explore Work” with animated borders or glass ripple effect.
+
+Fluid, animated background (SVG waves, jellyfish, or particle field).
+
+All elements should scale responsively and feel lively but not overwhelming.
+
+👤 About Me
+Glass card layout with your story, philosophy, and personality.
+
+Include metadata like Name, Email, Location, and Role — styled like an ID card.
+
+Optional animation (e.g., typewriter text or profile image zoom on scroll).
+
+🛠️ Skills Section
+Split into:
+
+Technical Skills: Bar chart visual (animated widths on scroll).
+
+Soft Skills: Radar chart view (JS/CSS only), or star rating visualization.
+
+Allow filtering by category (Frontend, Backend, Tools, Soft Skills).
+
+Each skill tile can have an icon, hover glow, and animation on reveal.
+
+🗺️ Journey Timeline
+Vertical or horizontal animated timeline.
+
+Milestone entries with icons, expandable detail on hover/click.
+
+Smooth entrance animations as user scrolls.
+
+🎓 Education Timeline
+Minimal, modern layout: clean institutional logos, degree titles, years.
+
+Hover-to-expand or slide-up cards for detail.
+
+Seamlessly aligned with journey timeline style.
+
+📄 Resume Access (Secure)
+Embed resume in an elegant glass viewer.
+
+Access protected via OTP (one-time password) simulation (pure JS).
+
+Animate resume card appearance after successful OTP entry.
+
+🌐 Profiles Preview
+Showcase GitHub, LeetCode, and social links with:
+
+Live activity simulation (commits, problems solved).
+
+Hover-tilt cards, SVG icons with glow, animated counters.
+
+Clean previews styled like app cards.
+
+📬 Contact Section
+Full-width, dark glassmorphic form.
+
+Input fields with glowing focus states, smooth entry animations.
+
+Include confirmation animation (e.g., morph into a checkmark or envelope flying out).
+
+🦶 Footer
+Extended footer with:
+
+Section links, contact info, and social icons (SVG, animated on hover).
+
+“Crafted with ❤️ and JS” message.
+
+Floating background blobs or soft wave motion.
+
+⚙️ Global Features
+Scroll-triggered animations using Intersection Observer or JS.
+
+Consistent rounded borders, shadows, and UI polish.
+
+Responsive design, fully optimized for all screen sizes.
+
+No external libraries or frameworks — purely handcrafted with vanilla HTML, CSS, and JS.
