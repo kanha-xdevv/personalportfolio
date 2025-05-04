@@ -410,9 +410,9 @@
 }
 
 .code-right {
-    top: 50%;
+    top: 25%;
     right: -20px;
-    transform: translateY(-50%) translateX(0);
+    transform: translateY(0) translateX(0);
     animation: float-right 4s ease-in-out infinite alternate;
 }
 
@@ -441,8 +441,8 @@
 }
 
 @keyframes float-right {
-    0% { transform: translateY(-50%) translateX(0); }
-    100% { transform: translateY(-50%) translateX(10px); }
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(0) translateX(10px); }
 }
 
 @keyframes float-bottom {
@@ -481,26 +481,26 @@
 
 .left-bracket {
     left: -25px;
-    top: 50%;
-    transform: translateY(-50%) rotateY(30deg);
+    top: 20%;
+    transform: translateY(0) rotateY(30deg);
     animation: rotate-bracket-left 6s ease-in-out infinite alternate, pulse-brackets 3s ease-in-out infinite alternate;
 }
 
 .right-bracket {
     right: -25px;
-    top: 50%;
-    transform: translateY(-50%) rotateY(-30deg);
+    bottom: 20%;
+    transform: translateY(0) rotateY(-30deg);
     animation: rotate-bracket-right 6s ease-in-out infinite alternate, pulse-brackets 3s ease-in-out infinite alternate 1s;
 }
 
 @keyframes rotate-bracket-left {
-    0% { transform: translateY(-50%) rotateY(30deg) translateX(0); }
-    100% { transform: translateY(-50%) rotateY(45deg) translateX(-5px); }
+    0% { transform: translateY(0) rotateY(30deg) translateX(0); }
+    100% { transform: translateY(0) rotateY(45deg) translateX(-5px); }
 }
 
 @keyframes rotate-bracket-right {
-    0% { transform: translateY(-50%) rotateY(-30deg) translateX(0); }
-    100% { transform: translateY(-50%) rotateY(-45deg) translateX(5px); }
+    0% { transform: translateY(0) rotateY(-30deg) translateX(0); }
+    100% { transform: translateY(0) rotateY(-45deg) translateX(5px); }
 }
 
 /* Floating binary/hex numbers */
