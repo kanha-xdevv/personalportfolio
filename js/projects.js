@@ -4,141 +4,188 @@
 
 // Store project data for modal display
 const projectData = {
-    project1: {
-        title: "E-commerce Platform",
-        description: "A full-featured e-commerce platform with product catalog, shopping cart, user authentication, payment processing, and admin dashboard. The platform supports multiple payment gateways and has a responsive design for all devices.",
-        client: "RetailTech Solutions",
+    project7: {
+        title: "VR-Based Tour Website",
+        description: "An immersive virtual reality tour platform allowing users to explore different locations in 360° VR. The website includes interactive elements, location information, and supports various VR headsets for a fully immersive experience.",
+        client: "Virtual Explorations Inc.",
         date: "2023",
-        role: "Lead Frontend Developer",
-        technologies: ["React", "Redux", "Node.js", "Express", "MongoDB", "Stripe API", "AWS S3"],
+        role: "WebXR Developer",
+        technologies: ["Three.js", "WebGL", "JavaScript", "WebVR API", "React"],
         features: [
-            "User authentication and profile management",
-            "Product search with filters and sorting",
-            "Real-time shopping cart updates",
-            "Secure payment processing with multiple gateways",
-            "Order tracking and history",
-            "Admin dashboard for inventory management"
+            "360° panoramic views of different locations",
+            "Interactive hotspots with additional information",
+            "Support for VR headsets like Oculus, HTC Vive and Google Cardboard",
+            "Location-based audio narration",
+            "Smooth transitions between different viewpoints",
+            "Cross-platform compatibility for desktop and mobile"
         ],
-        liveLink: "https://ecommerce-platform.example.com",
-        githubLink: "https://github.com/johndoe/ecommerce",
+        liveLink: "https://vr-tours.example.com",
+        githubLink: "https://github.com/kanhax-dev/vr-tour",
         images: [
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500"
+            "project_images/project_7.jpg",
+            "project_images/project_1.jpg",
+            "project_images/project_4.jpg"
+        ]
+    },
+    
+    project8: {
+        title: "Interactive To-Do App",
+        description: "A sophisticated to-do list application with drag-and-drop task organization, categories, priorities, and detailed progress tracking. The app uses modern design principles and animations to make task management enjoyable.",
+        client: "Personal Project",
+        date: "2022",
+        role: "Front-end Developer",
+        technologies: ["JavaScript", "CSS3", "Local Storage", "Drag & Drop API", "Responsive Design"],
+        features: [
+            "Intuitive drag-and-drop task organization",
+            "Task categorization and priority levels",
+            "Due dates with reminder notifications",
+            "Progress tracking and completion statistics",
+            "Dark/light theme switching",
+            "Offline functionality with local storage"
+        ],
+        liveLink: "https://todo-app.example.com",
+        githubLink: "https://github.com/kanhax-dev/todo-app",
+        images: [
+            "project_images/project_8.jpg",
+            "project_images/project_4.jpg",
+            "project_images/project_3.jpg"
+        ]
+    },
+    project1: {
+        title: "Jarvis AI Assistant",
+        description: "An advanced AI voice assistant that can understand natural language commands, perform tasks, and learn from user interactions. Built with Python and machine learning, it can control smart home devices, search the web, play music, and more.",
+        client: "Personal Project",
+        date: "2023",
+        role: "Full Stack Developer",
+        technologies: ["Python", "Natural Language Processing", "Speech Recognition", "TensorFlow", "OpenAI API"],
+        features: [
+            "Voice command recognition and natural language understanding",
+            "Smart home device integration and control",
+            "Web search and information retrieval",
+            "Calendar and reminder management",
+            "Personalized responses based on user preferences",
+            "Continuous learning from user interactions"
+        ],
+        liveLink: "https://jarvis-ai.example.com",
+        githubLink: "https://github.com/kanhax-dev/jarvis-ai",
+        images: [
+            "project_images/project_1.jpg",
+            "project_images/project_4.jpg",
+            "project_images/project_7.jpg"
         ]
     },
     project2: {
-        title: "Fitness Tracker App",
-        description: "A mobile application for tracking fitness activities, setting goals, and monitoring progress. The app includes workout plans, nutrition tracking, and social features to connect with friends and share achievements.",
-        client: "FitLife Health",
-        date: "2022",
-        role: "Mobile Developer",
-        technologies: ["React Native", "Firebase", "Redux", "Google Fit API", "Apple HealthKit"],
+        title: "Netflix Clone",
+        description: "A Netflix-inspired streaming platform featuring user authentication, content browsing by categories, video playback, and personalized recommendations. The app replicates the core functionality and UI experience of the popular streaming service.",
+        client: "Personal Project",
+        date: "2023",
+        role: "Front-end Developer",
+        technologies: ["React", "Firebase", "TMDB API", "CSS3", "Axios"],
         features: [
-            "Personalized workout plans and progress tracking",
-            "Integration with wearable devices",
-            "Nutrition and meal planning",
-            "Goal setting and achievement badges",
-            "Social sharing and community challenges"
+            "User authentication and profile management",
+            "Dynamic content loading from movie database API",
+            "Category-based content organization",
+            "Responsive interface that works on all devices",
+            "Trailer previews and content details modal"
         ],
-        liveLink: "https://fittracker.example.com",
-        githubLink: "https://github.com/johndoe/fitness-app",
+        liveLink: "https://netflix-clone.example.com",
+        githubLink: "https://github.com/kanhax-dev/netflix-clone",
         images: [
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500"
+            "project_images/project_2.jpg",
+            "project_images/project_5.jpg", 
+            "project_images/project_6.jpg"
         ]
     },
     project3: {
-        title: "Blog Platform",
-        description: "A modern blog platform with rich text editing, categories, tags, and user comments. The platform supports multiple authors, featured posts, and has a clean, responsive design. SEO optimizations are built-in for better search engine visibility.",
-        client: "ContentCreators Inc.",
-        date: "2022",
+        title: "Elegance Fashion E-commerce",
+        description: "A sophisticated e-commerce platform for fashion retail with an elegant user interface, product catalog, shopping cart functionality, secure checkout, and user account management. Features a visually appealing design focused on showcasing clothing and accessories.",
+        client: "Elegance Fashion",
+        date: "2023",
         role: "Full Stack Developer",
-        technologies: ["Vue.js", "Nuxt.js", "Express", "PostgreSQL", "Markdown", "AWS"],
+        technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe", "AWS S3"],
         features: [
-            "Rich text editor with markdown support",
-            "Category and tag organization",
-            "User comments and notifications",
-            "Author profiles and dashboards",
-            "SEO optimized article pages",
-            "Analytics for tracking article performance"
+            "Product catalog with filtering and sorting options",
+            "User authentication and profile management",
+            "Shopping cart and wishlist functionality",
+            "Secure payment processing",
+            "Order tracking and history",
+            "Responsive design for mobile and desktop shopping"
         ],
-        liveLink: "https://blog-platform.example.com",
-        githubLink: "https://github.com/johndoe/blog-platform",
+        liveLink: "https://elegance-fashion.example.com",
+        githubLink: "https://github.com/kanhax-dev/elegance-fashion",
         images: [
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500"
+            "project_images/project_3.jpg",
+            "project_images/project_8.jpg",
+            "project_images/project_1.jpg"
         ]
     },
     project4: {
-        title: "Image Recognition AI",
-        description: "An AI-powered image recognition system that can identify objects, faces, and scenes in photographs. The system uses deep learning models trained on large datasets and provides an API for developers to integrate into their applications.",
-        client: "AI Research Lab",
-        date: "2021",
-        role: "Machine Learning Engineer",
-        technologies: ["Python", "TensorFlow", "Keras", "OpenCV", "Flask", "Docker"],
+        title: "Pomodoro Timer",
+        description: "A productivity tool based on the Pomodoro Technique, featuring customizable work and break intervals, task tracking, and statistics. The timer helps users maintain focus and productivity by alternating between concentrated work periods and short breaks.",
+        client: "Personal Project",
+        date: "2022",
+        role: "Front-end Developer",
+        technologies: ["JavaScript", "CSS3", "HTML5", "Local Storage", "SVG Animation"],
         features: [
-            "Real-time object detection and classification",
-            "Face recognition with emotion analysis",
-            "Scene understanding and context recognition",
-            "RESTful API for third-party integration",
-            "Batch processing for large image datasets",
-            "Model training interface for custom object detection"
+            "Customizable work and break intervals",
+            "Task tracking and completion history",
+            "Audio notifications and visual alerts",
+            "Productivity statistics and analytics",
+            "Offline functionality using local storage",
+            "Elegant and distraction-free UI design"
         ],
-        liveLink: "https://image-ai.example.com",
-        githubLink: "https://github.com/johndoe/ml-project",
+        liveLink: "https://pomodoro-timer.example.com",
+        githubLink: "https://github.com/kanhax-dev/pomodoro",
         images: [
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500"
+            "project_images/project_4.jpg",
+            "project_images/project_8.jpg",
+            "project_images/project_7.jpg"
         ]
     },
     project5: {
-        title: "Task Management System",
-        description: "A comprehensive task management system for teams with project organization, task assignments, deadlines, and progress tracking. The system includes reporting tools, time tracking, and integration with popular calendar applications.",
-        client: "ProductivityPro",
-        date: "2021",
-        role: "Full Stack Developer",
-        technologies: ["Angular", "TypeScript", "Spring Boot", "Java", "MySQL", "Docker"],
+        title: "Disney+ Clone",
+        description: "A Disney+ streaming platform clone featuring user authentication, content browsing by categories, video playback, and a sleek UI design. The app includes branded sections for Disney, Pixar, Marvel, Star Wars, and National Geographic content.",
+        client: "Personal Project",
+        date: "2022",
+        role: "Front-end Developer",
+        technologies: ["React", "Redux", "Styled Components", "Firebase", "TMDB API"],
         features: [
-            "Project and task organization with drag-and-drop interface",
-            "User roles and permission management",
-            "Deadline notifications and reminders",
-            "Time tracking and reporting",
-            "Calendar integration (Google, Outlook)",
-            "Document attachment and version control"
+            "User authentication and profile system",
+            "Dynamic content loading by franchises and categories",
+            "Responsive grid layout for browsing titles",
+            "Content details page with trailers and related content",
+            "Immersive UI with animated transitions",
+            "Watchlist and continue watching functionality"
         ],
-        liveLink: "https://task-manager.example.com",
-        githubLink: "https://github.com/johndoe/task-manager",
+        liveLink: "https://disney-plus-clone.example.com",
+        githubLink: "https://github.com/kanhax-dev/disney-clone",
         images: [
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500"
+            "project_images/project_5.jpg",
+            "project_images/project_2.jpg",
+            "project_images/project_6.jpg"
         ]
     },
     project6: {
-        title: "Weather Forecast App",
-        description: "A weather forecast application that provides real-time weather data, hourly and daily forecasts, and severe weather alerts. The app includes interactive maps, radar imagery, and customizable notifications for user-defined locations.",
-        client: "WeatherTech Solutions",
-        date: "2020",
-        role: "Mobile Developer",
-        technologies: ["Flutter", "Dart", "Firebase", "Weather API", "Google Maps API"],
+        title: "Instagram Clone",
+        description: "A feature-rich Instagram clone with social media functionality including photo sharing, comments, likes, user profiles, and direct messaging. The app accurately recreates the core social experience of the popular platform.",
+        client: "Personal Project",
+        date: "2022",
+        role: "Full Stack Developer",
+        technologies: ["React", "Firebase", "Material UI", "Firestore", "Cloud Functions"],
         features: [
-            "Real-time weather updates and forecasts",
-            "Interactive maps with radar and satellite imagery",
-            "Location-based weather alerts and notifications",
-            "Customizable dashboard with favorite locations",
-            "Historical weather data and trends",
-            "Widget support for quick access to weather information"
+            "User authentication and profile customization",
+            "Photo upload with filters and editing tools",
+            "Feed algorithm showing posts from followed users",
+            "Comments, likes, and post saving functionality",
+            "Real-time notifications and activity feed",
+            "Direct messaging between users"
         ],
-        liveLink: "https://weather-app.example.com",
-        githubLink: "https://github.com/johndoe/weather-app",
+        liveLink: "https://instagram-clone.example.com",
+        githubLink: "https://github.com/kanhax-dev/instagram-clone",
         images: [
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500",
-            "https://via.placeholder.com/800x500"
+            "project_images/project_6.jpg",
+            "project_images/project_3.jpg",
+            "project_images/project_2.jpg"
         ]
     }
 };
