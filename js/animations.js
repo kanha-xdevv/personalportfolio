@@ -227,4 +227,38 @@ document.addEventListener('DOMContentLoaded', function() {
     window.animateSkillBars = animateSkillBars;
     window.createParticles = createParticles;
     window.initTypingAnimation = initTypingAnimation;
+    
+    // Initialize profile animations
+    handleProfileAnimations();
 });
+
+/**
+ * Handle animation for profile section
+ */
+function handleProfileAnimations() {
+    // Apply perspective animation to profile frame
+    const profileFrame = document.querySelector('.profile-frame');
+    if (profileFrame) {
+        document.addEventListener('mousemove', function(e) {
+            if (window.innerWidth < 992) return; // Disable on mobile
+            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            // Calculate rotation based on mouse position
+            const rotateX = 5 - (mouseY / windowHeight * 10);
+            const rotateY = (mouseX / windowWidth * 10) - 5;
+            
+            // Apply the rotation
+            profileFrame.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        // Reset on mouse leave
+        document.addEventListener('mouseleave', function() {
+            profileFrame.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    }
+}

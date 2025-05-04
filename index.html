@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/advanced-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -74,19 +74,37 @@
     <main>
         <!-- Home Section -->
         <section id="home" class="section">
+            <!-- Grid background -->
+            <div class="grid-lines"></div>
+            
+            <!-- Floating particles -->
+            <div class="particles-background">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            
             <div class="home-container">
                 <div class="home-content">
+                    <!-- Left side - Text content -->
                     <div class="home-left-side">
-                        <div class="title-tag">&lt;h1&gt;</div>
-                        <h1 class="animate-text">Hello, I'm <span class="highlight">John Doe</span></h1>
-                        <div class="title-tag">&lt;/h1&gt;</div>
-                        
-                        <div class="subtitle-container">
-                            <div class="line-decoration"></div>
-                            <h2 class="animate-text delay-1">Software Developer</h2>
+                        <div class="headline-container">
+                            <div class="tag-container">
+                                <div class="tag-line"></div>
+                                <div class="tag-text">developer</div>
+                            </div>
+                            
+                            <h1 class="animate-text">Hello, I'm <span class="highlight">John Doe</span></h1>
+                            
+                            <div class="subtitle-container">
+                                <div class="line-decoration"></div>
+                                <h2 class="animate-text delay-1">Software Developer</h2>
+                            </div>
                         </div>
                         
-                        <p class="animate-text delay-2">Passionate about creating elegant solutions to complex problems.</p>
+                        <p class="animate-text delay-2">Passionate about creating elegant solutions to complex problems. Building cutting-edge software with a focus on performance and user experience.</p>
                         
                         <div class="home-buttons animate-text delay-3">
                             <a href="#contact" class="btn primary-btn">CONTACT ME</a>
@@ -94,14 +112,27 @@
                         </div>
                     </div>
                     
-                    <div class="profile-image animate-fade-in">
-                        <div class="profile-container">
-                            <div class="profile-photo" role="img" aria-label="Profile photo of John Doe"></div>
+                    <!-- Right side - Profile image -->
+                    <div class="profile-section">
+                        <!-- Floating number animations -->
+                        <div class="code-numbers code-numbers-1">01001100 01101111 01110010 01100101 01101101 00100000 01101001 01110000 01110011 01110101 01101101 00100000 01100100 01101111 01101100 01101111 01110010 00100000 01110011 01101001 01110100 00100000 01100001 01101101 01100101 01110100</div>
+                        
+                        <div class="code-numbers code-numbers-2">FF8906 D4A5A5 7F5AF0 2F2F2F E53170 191724 8BD450 FF8906 D4A5A5 7F5AF0 2F2F2F E53170 191724 8BD450</div>
+                        
+                        <div class="profile-frame">
+                            <div class="rotating-glow"></div>
+                            <div class="profile-container">
+                                <div class="profile-photo" role="img" aria-label="Profile photo of John Doe"></div>
+                            </div>
+                            
+                            <!-- Decorative elements -->
                             <div class="bracket left-bracket">&#123;</div>
                             <div class="bracket right-bracket">&#125;</div>
-                            <div class="code-element code-top">const dev = true;</div>
-                            <div class="code-element code-right">"skills": ["..."]</div>
-                            <div class="code-element code-bottom">function create() { }</div>
+                            
+                            <!-- Floating code snippets -->
+                            <div class="code-element code-top">const dev = new Developer();</div>
+                            <div class="code-element code-right">function solve(problem) { }</div>
+                            <div class="code-element code-bottom">return innovation;</div>
                         </div>
                     </div>
                 </div>
