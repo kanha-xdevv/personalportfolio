@@ -139,13 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetSection = document.querySelector(targetId);
         
         if (targetSection) {
-            // Close mobile menu if open
-            const navMenu = document.querySelector('nav ul');
-            const menuToggle = document.querySelector('.menu-toggle');
-            if (navMenu && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-            }
+            // Handle mobile menu close - now managed in the addMobileMenuToggle function
             
             const headerHeight = header.offsetHeight;
             const targetPosition = targetSection.offsetTop - headerHeight;
@@ -203,25 +197,33 @@ document.addEventListener('DOMContentLoaded', function() {
      * Add mobile menu toggle functionality
      */
     function addMobileMenuToggle() {
-        const navigation = document.querySelector('nav');
-        const navUl = navigation.querySelector('ul');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navUl = document.querySelector('nav ul');
         
-        // Create toggle button if it doesn't exist
-        if (!document.querySelector('.menu-toggle')) {
-            const toggleBtn = document.createElement('div');
-            toggleBtn.classList.add('menu-toggle');
-            
-            for (let i = 0; i < 3; i++) {
-                const span = document.createElement('span');
-                toggleBtn.appendChild(span);
-            }
-            
-            navigation.insertBefore(toggleBtn, navUl);
-            
+        if (menuToggle && navUl) {
             // Add event listener to toggle button
-            toggleBtn.addEventListener('click', function() {
+            menuToggle.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navUl.classList.toggle('active');
+                
+                // Change the menu text when active
+                const toggleText = this.querySelector('.toggle-text');
+                if (toggleText) {
+                    toggleText.textContent = this.classList.contains('active') ? 'close' : 'menu';
+                }
+            });
+            
+            // Add close on nav link click
+            const navLinks = navUl.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    navUl.classList.remove('active');
+                    const toggleText = menuToggle.querySelector('.toggle-text');
+                    if (toggleText) {
+                        toggleText.textContent = 'menu';
+                    }
+                });
             });
         }
     }
