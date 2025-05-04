@@ -1876,18 +1876,132 @@ nav ul li a:hover {
 }
 
 .contact-form {
-    padding: var(--spacing-md);
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    background-color: rgba(25, 23, 36, 0.6);
+    border-radius: 8px;
+    position: relative;
+    border-left: 3px solid var(--tertiary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Courier New', monospace;
+}
+
+.contact-form::before {
+    content: '// Send a message';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    background-color: var(--background-color);
+    padding: 5px 15px;
+    font-family: 'Courier New', monospace;
+    color: var(--tertiary-color);
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+.contact-form::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--success-color);
+    box-shadow: 0 0 10px var(--success-color);
+    opacity: 0.7;
+}
+
+#contact-form .form-group {
+    position: relative;
+    margin-bottom: var(--spacing-md);
 }
 
 #contact-form .form-group:last-of-type {
     margin-bottom: var(--spacing-lg);
 }
 
-#contact-form textarea {
+#contact-form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--tertiary-color);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+#contact-form label::before {
+    content: 'const ';
+    color: #e53170;
+    font-style: italic;
+}
+
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(15, 14, 22, 0.6);
+    border: 1px solid rgba(127, 90, 240, 0.2);
+    border-radius: 6px;
+    color: #e1e1ff;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
     resize: vertical;
-    min-height: 120px;
+    line-height: 1.5;
+}
+
+#contact-form input:focus, #contact-form textarea:focus {
+    outline: none;
+    border-color: var(--tertiary-color);
+    box-shadow: 0 0 0 2px rgba(127, 90, 240, 0.15);
+}
+
+#contact-form textarea {
+    min-height: 150px;
+}
+
+#contact-form input::placeholder, #contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+}
+
+#contact-form button {
+    background: linear-gradient(90deg, var(--tertiary-color), #2cb67d);
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--spacing-md);
+}
+
+#contact-form button::before {
+    content: '> ';
+    opacity: 0.7;
+}
+
+#contact-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(127, 90, 240, 0.3);
+}
+
+.success-message {
+    text-align: center;
+    padding: var(--spacing-xl);
+    animation: fadeIn 0.5s ease-in;
+}
+
+.success-message i {
+    font-size: 3rem;
+    color: var(--success-color);
+    margin-bottom: var(--spacing-md);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* ===== FOOTER ===== */
@@ -1938,11 +2052,46 @@ nav ul li a:hover {
 
 .footer-links ul li a {
     color: var(--text-light);
+    position: relative;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    padding-left: 0;
 }
 
 .footer-links ul li a:hover {
-    color: var(--accent-color);
-    padding-left: var(--spacing-xs);
+    color: var(--tertiary-color);
+    padding-left: var(--spacing-sm);
+}
+
+.footer-links ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 1px;
+    background-color: var(--tertiary-color);
+    transition: width 0.3s ease;
+}
+
+.footer-links ul li a:hover::before {
+    width: 10px;
+}
+
+.footer-links ul li a::after {
+    content: '();';
+    position: absolute;
+    right: -20px;
+    opacity: 0;
+    color: var(--tertiary-color);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(-10px);
+}
+
+.footer-links ul li a:hover::after {
+    opacity: 0.7;
+    transform: translateX(0);
 }
 
 .footer-bottom {
@@ -1952,6 +2101,22 @@ nav ul li a:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-light);
     font-size: var(--font-sm);
+    position: relative;
+    font-family: 'Courier New', monospace;
+}
+
+.footer-bottom::before {
+    content: '/* ';
+    font-family: 'Courier New', monospace;
+    color: var(--tertiary-color);
+    opacity: 0.6;
+}
+
+.footer-bottom::after {
+    content: ' */';
+    font-family: 'Courier New', monospace;
+    color: var(--tertiary-color);
+    opacity: 0.6;
 }
 
 .footer-bottom p {
@@ -1974,8 +2139,8 @@ nav ul li a:hover {
     right: 30px;
     width: 50px;
     height: 50px;
-    border-radius: var(--border-radius-circle);
-    background-color: var(--accent-color);
+    border-radius: 10px;
+    background-color: var(--tertiary-color);
     color: var(--text-color);
     display: flex;
     align-items: center;
@@ -1986,6 +2151,34 @@ nav ul li a:hover {
     transition: var(--transition-normal);
     border: none;
     z-index: var(--z-tooltip);
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 5px 15px rgba(127, 90, 240, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#back-to-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    opacity: 0.5;
+}
+
+#back-to-top::after {
+    content: 'return top;';
+    position: absolute;
+    font-size: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
 }
 
 #back-to-top.visible {
@@ -1995,7 +2188,14 @@ nav ul li a:hover {
 
 #back-to-top:hover {
     transform: translateY(-5px);
-    background-color: var(--accent-hover);
+    background-color: rgba(127, 90, 240, 0.9);
+    width: 120px;
+    box-shadow: 0 7px 20px rgba(127, 90, 240, 0.4);
+}
+
+#back-to-top:hover::after {
+    font-size: 0.75rem;
+    bottom: 8px;
 }
 
 /* Developer-style Navigation Enhancement */
