@@ -302,14 +302,18 @@
     height: 100%;
     border-radius: 50%;
     background: conic-gradient(
-        rgba(255, 137, 6, 0.2),
-        rgba(229, 49, 112, 0.2),
-        rgba(127, 90, 240, 0.2),
-        rgba(255, 137, 6, 0.2)
+        rgba(255, 137, 6, 0.4),
+        rgba(229, 49, 112, 0.4),
+        rgba(127, 90, 240, 0.4),
+        rgba(255, 137, 6, 0.4)
     );
     filter: blur(20px);
     animation: rotate 10s linear infinite;
     z-index: 0;
+    box-shadow: 
+        0 0 40px rgba(255, 137, 6, 0.3),
+        0 0 30px rgba(229, 49, 112, 0.2),
+        0 0 20px rgba(127, 90, 240, 0.2);
 }
 
 @keyframes rotate {
@@ -340,30 +344,44 @@
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    transform: scale(1);
+    transform: scale(0.95);
     transition: all 0.5s ease;
     z-index: 1;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
 }
 
 .profile-container:hover .profile-photo {
     transform: scale(1.05);
 }
 
+.code-element:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(255, 137, 6, 0.2);
+    border-color: rgba(255, 137, 6, 0.6);
+    color: #ffb869;
+    background: rgba(25, 23, 36, 0.9);
+}
+
 /* Code elements */
 .code-element {
     position: absolute;
     font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    background: rgba(15, 14, 23, 0.8);
-    color: var(--accent-color);
-    padding: 8px 12px;
+    font-size: 0.9rem;
+    background: rgba(15, 14, 23, 0.85);
+    color: #ff8906;
+    padding: 10px 16px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(255, 137, 6, 0.1);
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(127, 90, 240, 0.3);
+    border: 1px solid rgba(255, 137, 6, 0.3);
     z-index: 2;
     white-space: nowrap;
     transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 137, 6, 0.3);
 }
 
 .code-element::before {
@@ -435,30 +453,44 @@
 /* Rotating brackets */
 .bracket {
     position: absolute;
-    font-size: 72px;
+    font-size: 78px;
     font-weight: bold;
     font-family: 'Courier New', monospace;
     line-height: 1;
-    color: rgba(127, 90, 240, 0.2);
-    text-shadow: 0 0 20px rgba(127, 90, 240, 0.2);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 137, 6, 0.5),
+        rgba(127, 90, 240, 0.5)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 
+        0 0 10px rgba(255, 137, 6, 0.3),
+        0 0 20px rgba(127, 90, 240, 0.3);
     transform-style: preserve-3d;
     transition: all 0.3s ease;
     user-select: none;
     z-index: 3;
+    animation: pulse-brackets 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-brackets {
+    0% { text-shadow: 0 0 10px rgba(255, 137, 6, 0.3), 0 0 20px rgba(127, 90, 240, 0.3); }
+    100% { text-shadow: 0 0 15px rgba(255, 137, 6, 0.5), 0 0 30px rgba(127, 90, 240, 0.5); }
 }
 
 .left-bracket {
-    left: -20px;
+    left: -25px;
     top: 50%;
     transform: translateY(-50%) rotateY(30deg);
-    animation: rotate-bracket-left 6s ease-in-out infinite alternate;
+    animation: rotate-bracket-left 6s ease-in-out infinite alternate, pulse-brackets 3s ease-in-out infinite alternate;
 }
 
 .right-bracket {
-    right: -20px;
+    right: -25px;
     top: 50%;
     transform: translateY(-50%) rotateY(-30deg);
-    animation: rotate-bracket-right 6s ease-in-out infinite alternate;
+    animation: rotate-bracket-right 6s ease-in-out infinite alternate, pulse-brackets 3s ease-in-out infinite alternate 1s;
 }
 
 @keyframes rotate-bracket-left {
