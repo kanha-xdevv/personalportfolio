@@ -378,10 +378,11 @@
     }
     
     nav ul li a {
-        padding: 1rem 1.5rem;
-        width: 90%;
+        padding: 1rem 0;
+        width: 85%;
         margin: 0 auto;
         display: flex;
+        flex-direction: row;
         justify-content: flex-start;
         align-items: center;
         border-radius: 8px;
@@ -400,7 +401,14 @@
         display: inline-block !important;
         font-size: 1.2rem;
         margin-right: 1rem;
+        margin-left: 1rem;
         color: var(--tertiary-color);
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        background: rgba(127, 90, 240, 0.1);
+        border-radius: 8px;
     }
     
     nav ul li a span {
