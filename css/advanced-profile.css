@@ -409,16 +409,16 @@
     transform: translateX(-50%) rotate(45deg);
 }
 
-.code-right {
+.code-left {
     top: 25%;
-    right: -20px;
+    left: -20px;
     transform: translateY(0) translateX(0);
-    animation: float-right 4s ease-in-out infinite alternate;
+    animation: float-left 4s ease-in-out infinite alternate;
 }
 
-.code-right::before {
+.code-left::before {
     top: 50%;
-    left: -5px;
+    right: -5px;
     transform: translateY(-50%) rotate(45deg);
 }
 
@@ -440,9 +440,9 @@
     100% { transform: translateX(-50%) translateY(-60%); }
 }
 
-@keyframes float-right {
+@keyframes float-left {
     0% { transform: translateY(0) translateX(0); }
-    100% { transform: translateY(0) translateX(10px); }
+    100% { transform: translateY(0) translateX(-10px); }
 }
 
 @keyframes float-bottom {
@@ -612,7 +612,7 @@
         height: 240px;
     }
     
-    .code-right {
+    .code-left {
         display: none;
     }
 }
