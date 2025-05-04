@@ -883,7 +883,7 @@ nav ul li a.active span {
 .profile-photo {
     width: 100%;
     height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1607743386760-88f10eb63d39?q=80&w=1470');
+    background-image: url('../images/profile.jpg'); /* Replace 'profile.jpg' with your actual filename */
     background-size: cover;
     background-position: center;
     transition: var(--transition-slow);
