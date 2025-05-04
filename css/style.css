@@ -883,40 +883,42 @@ nav ul li a.active span {
 .profile-photo {
     width: 100%;
     height: 100%;
-    background-image: url('https://img.freepik.com/premium-photo/work-online-vector-stock-illustration-abstract-contemporary-modern-trendy-doodle-style_1313853-135385.jpg?ga=GA1.1.608870753.1746347487&semt=ais_hybrid&w=740');
+    background-image: url('https://images.unsplash.com/photo-1607743386760-88f10eb63d39?q=80&w=1470');
     background-size: cover;
     background-position: center;
     transition: var(--transition-slow);
-    border-radius: 20px;
+    border-radius: 16px;
     position: relative;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     transform: rotate(0deg);
-    border: none;
+    border: 2px solid rgba(127, 90, 240, 0.2);
+    filter: saturate(1.2) contrast(1.1);
 }
 
 .profile-photo::before {
     content: '';
     position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(255, 137, 6, 0.4);
-    border-radius: 50%;
-    z-index: -1;
-    animation: pulse-slow 3s ease-in-out infinite alternate;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    border: 1px solid rgba(127, 90, 240, 0.15);
+    border-radius: 17px;
+    z-index: 0;
+    filter: blur(1px);
 }
 
 .profile-photo::after {
     content: '';
     position: absolute;
-    bottom: -20px;
-    left: -10px;
-    width: 50px;
-    height: 30px;
-    background: rgba(127, 90, 240, 0.2);
-    border-radius: 50%;
-    z-index: -1;
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    border: 1px solid rgba(127, 90, 240, 0.1);
+    border-radius: 18px;
+    z-index: 0;
+    filter: blur(2px);
     animation: pulse-slow 4s ease-in-out infinite alternate-reverse;
 }
 
@@ -925,41 +927,56 @@ nav ul li a.active span {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 137, 6, 0.3);
 }
 
-.doodle-element {
+.code-bracket {
     position: absolute;
     font-family: 'Courier New', monospace;
-    background: #fff;
-    padding: 8px 12px;
-    border-radius: 14px;
+    font-size: 48px;
     font-weight: bold;
-    font-size: 14px;
-    transform: rotate(-5deg);
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    z-index: 3;
-    animation: float 5s ease-in-out infinite alternate;
+    color: rgba(127, 90, 240, 0.3);
+    text-shadow: 0 0 15px rgba(127, 90, 240, 0.3);
+    z-index: 1;
+    line-height: 1;
 }
 
-.doodle-code {
-    top: 10%;
-    right: -20px;
-    color: #6b46c1;
-}
-
-.doodle-design {
-    bottom: 15%;
+.code-bracket-left {
+    top: -15px;
     left: -15px;
-    color: #e53170;
-    transform: rotate(5deg);
-    animation-delay: 1s;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0) rotate(-5deg);
-    }
-    100% {
-        transform: translateY(-10px) rotate(-2deg);
-    }
+.code-bracket-right {
+    bottom: -15px;
+    right: -15px;
+}
+
+.code-dots {
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 80px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.code-dots::before,
+.code-dots::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(255, 137, 6, 0.4);
+    box-shadow: 0 0 8px rgba(255, 137, 6, 0.4);
+}
+
+.code-dots::before {
+    animation: pulse-slow 2s ease-in-out infinite alternate;
+}
+
+.code-dots::after {
+    animation: pulse-slow 3s ease-in-out infinite alternate-reverse;
 }
 
 /* ===== ABOUT SECTION ===== */
