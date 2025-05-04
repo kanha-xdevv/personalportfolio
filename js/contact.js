@@ -1,28 +1,92 @@
 /**
  * Contact form functionality
  */
+document.addEventListener('DOMContentLoaded', function() {
+    initContact();
+});
 
 function initContact() {
     setupFormValidation();
     setupFormSubmission();
     addTypingEffects();
+    
+    // Initialize toast container
+    if (!document.querySelector('.toast-container')) {
+        const toastContainer = document.createElement('div');
+        toastContainer.className = 'toast-container';
+        document.body.appendChild(toastContainer);
+    }
 }
 
 /**
  * Set up real-time form validation
  */
 function setupFormValidation() {
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('contact-email');
-    const subjectInput = document.getElementById('subject');
-    const messageInput = document.getElementById('message');
+    const form = document.getElementById('contact-form');
+    if (!form) return;
     
-    const inputs = [nameInput, emailInput, subjectInput, messageInput];
+    const inputs = form.querySelectorAll('input, textarea');
     
-    // Add validation on input
+    // Convert regular inputs to enhanced inputs with validation icons
     inputs.forEach(input => {
-        input.addEventListener('input', () => validateInput(input));
-        input.addEventListener('blur', () => validateInput(input, true));
+        // Skip submit button
+        if (input.type === 'submit') return;
+        
+        const formGroup = input.parentElement;
+        
+        // If the formGroup is already set up with validation, skip
+        if (formGroup.querySelector('.validation-icon')) return;
+        
+        // Create input wrapper if not exists
+        let inputWrapper = formGroup.querySelector('.input-wrapper');
+        if (!inputWrapper) {
+            inputWrapper = document.createElement('div');
+            inputWrapper.className = 'input-wrapper';
+            
+            // Move the input to the wrapper
+            input.parentNode.insertBefore(inputWrapper, input);
+            inputWrapper.appendChild(input);
+            
+            // Add focus background
+            const focusBg = document.createElement('div');
+            focusBg.className = 'input-focus-bg';
+            if (input.tagName === 'TEXTAREA') {
+                focusBg.classList.add('textarea-bg');
+            }
+            inputWrapper.appendChild(focusBg);
+            
+            // Add error message element
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            inputWrapper.appendChild(errorMessage);
+            
+            // Update input class
+            input.classList.add('form-input');
+        }
+        
+        // Add validation icon
+        const validationIcon = document.createElement('div');
+        validationIcon.className = 'validation-icon';
+        validationIcon.innerHTML = `
+            <i class="fas fa-check-circle success-icon"></i>
+            <i class="fas fa-times-circle error-icon"></i>
+        `;
+        formGroup.appendChild(validationIcon);
+        
+        // Add event listeners
+        input.addEventListener('focus', () => {
+            formGroup.classList.add('focus');
+        });
+        
+        input.addEventListener('blur', () => {
+            formGroup.classList.remove('focus');
+            validateInput(input, true);
+        });
+        
+        input.addEventListener('input', () => {
+            validateInput(input);
+            updateSubmitButtonState();
+        });
     });
 }
 
@@ -32,62 +96,53 @@ function setupFormValidation() {
  * @param {boolean} isFinal - Whether this is a final validation (e.g., on blur)
  */
 function validateInput(input, isFinal = false) {
-    const inputId = input.id;
-    const inputValue = input.value.trim();
-    const errorElement = document.getElementById(`${inputId}-error`);
     const formGroup = input.closest('.form-group');
+    const errorElement = formGroup.querySelector('.error-message');
+    const value = input.value.trim();
     
-    // Clear previous error state
-    formGroup.classList.remove('error', 'success');
-    errorElement.textContent = '';
+    // Remove previous validation states
+    formGroup.classList.remove('success', 'error');
     
-    // Skip validation if empty and not final
-    if (inputValue === '' && !isFinal) {
+    // Skip validation if the field is empty and not final validation
+    if (!value && !isFinal) {
         return;
     }
     
-    // Validate based on input type
-    if (inputValue === '') {
-        showError(input, errorElement, 'This field is required');
-    } else {
-        switch (inputId) {
-            case 'name':
-                if (inputValue.length < 2) {
-                    showError(input, errorElement, 'Name must be at least 2 characters');
-                } else {
-                    showSuccess(input);
-                }
-                break;
-                
-            case 'contact-email':
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(inputValue)) {
-                    showError(input, errorElement, 'Please enter a valid email address');
-                } else {
-                    showSuccess(input);
-                }
-                break;
-                
-            case 'subject':
-                if (inputValue.length < 4) {
-                    showError(input, errorElement, 'Subject must be at least 4 characters');
-                } else {
-                    showSuccess(input);
-                }
-                break;
-                
-            case 'message':
-                if (inputValue.length < 10) {
-                    showError(input, errorElement, 'Message must be at least 10 characters');
-                } else {
-                    showSuccess(input);
-                }
-                break;
+    // Validate based on input type or name
+    if (input.name === 'name' || input.id === 'name') {
+        if (!value) {
+            showError(input, errorElement, 'Name is required');
+        } else if (value.length < 2) {
+            showError(input, errorElement, 'Name must be at least 2 characters');
+        } else {
+            showSuccess(input);
+        }
+    } else if (input.name === 'email' || input.id === 'email') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!value) {
+            showError(input, errorElement, 'Email is required');
+        } else if (!emailRegex.test(value)) {
+            showError(input, errorElement, 'Please enter a valid email address');
+        } else {
+            showSuccess(input);
+        }
+    } else if (input.name === 'subject' || input.id === 'subject') {
+        if (!value && isFinal) {
+            showError(input, errorElement, 'Subject is required');
+        } else if (value && value.length < 4) {
+            showError(input, errorElement, 'Subject must be at least 4 characters');
+        } else if (value) {
+            showSuccess(input);
+        }
+    } else if (input.name === 'message' || input.id === 'message') {
+        if (!value && isFinal) {
+            showError(input, errorElement, 'Message is required');
+        } else if (value && value.length < 10) {
+            showError(input, errorElement, 'Message must be at least 10 characters');
+        } else if (value) {
+            showSuccess(input);
         }
     }
-    
-    // Update submit button state based on all inputs
-    updateSubmitButtonState();
 }
 
 /**
@@ -102,11 +157,14 @@ function showError(input, errorElement, message) {
     formGroup.classList.remove('success');
     errorElement.textContent = message;
     
-    // Add error animation
-    formGroup.classList.add('shake');
-    setTimeout(() => {
+    if (formGroup.classList.contains('shake')) {
         formGroup.classList.remove('shake');
-    }, 500);
+        setTimeout(() => {
+            formGroup.classList.add('shake');
+        }, 10);
+    } else {
+        formGroup.classList.add('shake');
+    }
 }
 
 /**
@@ -117,9 +175,9 @@ function showSuccess(input) {
     const formGroup = input.closest('.form-group');
     formGroup.classList.add('success');
     formGroup.classList.remove('error');
-    
-    // Add success animation
     formGroup.classList.add('pulse');
+    
+    // Remove pulse animation after it completes
     setTimeout(() => {
         formGroup.classList.remove('pulse');
     }, 500);
@@ -130,18 +188,30 @@ function showSuccess(input) {
  */
 function updateSubmitButtonState() {
     const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const inputs = Array.from(form.querySelectorAll('.form-input'));
+    if (!form) return;
     
-    const allFilled = inputs.every(input => input.value.trim() !== '');
-    const noErrors = document.querySelectorAll('.form-group.error').length === 0;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const inputs = form.querySelectorAll('input:not([type="submit"]), textarea');
+    let isValid = true;
     
-    if (allFilled && noErrors) {
-        submitBtn.removeAttribute('disabled');
+    inputs.forEach(input => {
+        // Check if required fields have value
+        if (input.required && !input.value.trim()) {
+            isValid = false;
+        }
+        
+        // Check if any field has error
+        if (input.closest('.form-group').classList.contains('error')) {
+            isValid = false;
+        }
+    });
+    
+    if (isValid) {
         submitBtn.classList.remove('disabled');
+        submitBtn.disabled = false;
     } else {
-        submitBtn.setAttribute('disabled', 'disabled');
         submitBtn.classList.add('disabled');
+        submitBtn.disabled = true;
     }
 }
 
@@ -150,50 +220,62 @@ function updateSubmitButtonState() {
  */
 function setupFormSubmission() {
     const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const submitAnimation = document.getElementById('submit-animation');
-    const submitMessage = document.getElementById('submit-message');
+    if (!form) return;
     
-    form.addEventListener('submit', (e) => {
+    // Create a wrapper for the submit button
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (!submitBtn) return;
+    
+    // Skip if already wrapped
+    if (submitBtn.parentElement.classList.contains('form-submit-wrapper')) return;
+    
+    const wrapper = document.createElement('div');
+    wrapper.className = 'form-submit-wrapper';
+    submitBtn.parentNode.insertBefore(wrapper, submitBtn);
+    wrapper.appendChild(submitBtn);
+    
+    // Create animation container
+    const animContainer = document.createElement('div');
+    animContainer.className = 'submit-animation-container hidden';
+    animContainer.innerHTML = `
+        <div class="submit-animation-circle"></div>
+        <div class="submit-animation-ring"></div>
+        <div class="submit-animation-message">Sending message...</div>
+    `;
+    wrapper.appendChild(animContainer);
+    
+    // Add form submission event
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validate all inputs first
-        const inputs = Array.from(form.querySelectorAll('.form-input'));
-        inputs.forEach(input => validateInput(input, true));
-        
-        // Check if form has any errors
-        if (document.querySelectorAll('.form-group.error').length > 0) {
-            return; // Don't submit if there are errors
-        }
-        
-        // Hide submit button and show animation
+        // Show animation
         submitBtn.classList.add('hidden');
-        submitAnimation.classList.remove('hidden');
+        animContainer.classList.remove('hidden');
         
-        // Simulate form submission (would be replaced with actual API call)
+        // Simulate form submission
         setTimeout(() => {
-            submitMessage.textContent = 'Sending...';
-        }, 500);
-        
-        setTimeout(() => {
-            // Show success message
-            submitAnimation.classList.add('success');
-            submitMessage.textContent = 'Message Sent!';
+            // Show success
+            animContainer.classList.add('success');
+            animContainer.querySelector('.submit-animation-message').textContent = 'Message sent successfully!';
+            
+            // Show toast notification
+            showToast('Your message has been sent successfully!', 'success');
             
             // Reset form after delay
             setTimeout(() => {
                 form.reset();
-                submitAnimation.classList.remove('success', 'hidden');
                 submitBtn.classList.remove('hidden');
-                submitAnimation.classList.add('hidden');
+                animContainer.classList.add('hidden');
+                animContainer.classList.remove('success');
                 
-                // Reset form group classes
-                document.querySelectorAll('.form-group').forEach(group => {
-                    group.classList.remove('success');
+                // Reset validation styles
+                form.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('success', 'error');
                 });
                 
-                // Show thank you message
-                showToast('Thank you for your message! I will get back to you soon.', 'success');
+                // Disable submit button after reset
+                submitBtn.classList.add('disabled');
+                submitBtn.disabled = true;
             }, 2000);
         }, 2000);
     });
@@ -203,17 +285,26 @@ function setupFormSubmission() {
  * Add typing effects to form inputs
  */
 function addTypingEffects() {
-    const inputs = document.querySelectorAll('.form-input');
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    
+    const inputs = form.querySelectorAll('input, textarea');
     
     inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            const formGroup = input.closest('.form-group');
-            formGroup.classList.add('focus');
-        });
+        // Skip submit button
+        if (input.type === 'submit') return;
         
-        input.addEventListener('blur', () => {
-            const formGroup = input.closest('.form-group');
-            formGroup.classList.remove('focus');
+        input.addEventListener('input', function() {
+            // Add typewriter sound effect (optional)
+            // playTypewriterSound();
+            
+            // Add cursor animation effect
+            if (!input.classList.contains('typing')) {
+                input.classList.add('typing');
+                setTimeout(() => {
+                    input.classList.remove('typing');
+                }, 100);
+            }
         });
     });
 }
@@ -224,7 +315,7 @@ function addTypingEffects() {
  * @param {string} type - The type of toast (success, error, info)
  */
 function showToast(message, type = 'info') {
-    // Create toast container if it doesn't exist
+    // Get or create toast container
     let toastContainer = document.querySelector('.toast-container');
     if (!toastContainer) {
         toastContainer = document.createElement('div');
@@ -237,70 +328,70 @@ function showToast(message, type = 'info') {
     toast.className = `toast ${type}`;
     
     // Set icon based on type
-    let icon = '';
-    switch (type) {
-        case 'success':
-            icon = '<i class="fas fa-check-circle"></i>';
-            break;
-        case 'error':
-            icon = '<i class="fas fa-exclamation-circle"></i>';
-            break;
-        default:
-            icon = '<i class="fas fa-info-circle"></i>';
-    }
+    let icon = 'fa-info-circle';
+    if (type === 'success') icon = 'fa-check-circle';
+    if (type === 'error') icon = 'fa-exclamation-circle';
     
-    // Set toast content
+    // Create toast content
     toast.innerHTML = `
         <div class="toast-content">
-            <div class="toast-icon">${icon}</div>
+            <i class="fas ${icon} toast-icon"></i>
             <div class="toast-message">${message}</div>
         </div>
         <div class="toast-progress"></div>
     `;
     
-    // Add toast to container
+    // Add to container
     toastContainer.appendChild(toast);
     
-    // Trigger animation
+    // Show toast with animation
     setTimeout(() => {
         toast.classList.add('show');
     }, 10);
     
-    // Auto remove after delay
-    const progressBar = toast.querySelector('.toast-progress');
+    // Setup progress bar animation
+    const progress = toast.querySelector('.toast-progress');
     let width = 100;
-    const interval = setInterval(() => {
-        width--;
-        if (progressBar) progressBar.style.width = width + '%';
+    const duration = 5000; // 5 seconds
+    const interval = 10;
+    const step = (interval / duration) * 100;
+    
+    const timer = setInterval(() => {
+        width -= step;
+        progress.style.width = width + '%';
         
         if (width <= 0) {
-            clearInterval(interval);
-            toast.classList.remove('show');
-            setTimeout(() => {
-                toastContainer.removeChild(toast);
-                
-                // Remove container if empty
-                if (toastContainer.children.length === 0) {
-                    document.body.removeChild(toastContainer);
-                }
-            }, 300);
+            clearInterval(timer);
+            removeToast(toast);
         }
-    }, 30);
+    }, interval);
     
-    // Close on click
+    // Add click to dismiss
     toast.addEventListener('click', () => {
-        clearInterval(interval);
-        toast.classList.remove('show');
-        setTimeout(() => {
-            toastContainer.removeChild(toast);
-            
-            // Remove container if empty
-            if (toastContainer.children.length === 0) {
-                document.body.removeChild(toastContainer);
-            }
-        }, 300);
+        clearInterval(timer);
+        removeToast(toast);
     });
+    
+    // Auto remove after duration
+    setTimeout(() => {
+        if (document.body.contains(toast)) {
+            clearInterval(timer);
+            removeToast(toast);
+        }
+    }, duration);
 }
 
-// Initialize contact functionality when DOM is loaded
-document.addEventListener('DOMContentLoaded', initContact);
+/**
+ * Remove toast with animation
+ * @param {Element} toast - The toast element to remove
+ */
+function removeToast(toast) {
+    toast.classList.remove('show');
+    
+    // Remove from DOM after animation completes
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+        }
+    }, 300);
+}
