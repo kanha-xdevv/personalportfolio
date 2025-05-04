@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Add menu toggle for mobile
             addMobileMenuToggle();
+
+            // Add code brackets to timeline items
+            addCodeDecoration();
         }, 2000);
 
         // Initialize background particles
@@ -40,6 +43,33 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add event listeners
         setupEventListeners();
+    }
+
+    /**
+     * Add code-style decorations to elements
+     */
+    function addCodeDecoration() {
+        // Add code brackets to timeline content
+        const timelineContents = document.querySelectorAll('.timeline-content');
+        timelineContents.forEach(content => {
+            const startBracket = document.createElement('span');
+            startBracket.classList.add('code-bracket-start');
+            startBracket.textContent = '{';
+            
+            const endBracket = document.createElement('span');
+            endBracket.classList.add('code-bracket-end');
+            endBracket.textContent = '}';
+            
+            content.appendChild(startBracket);
+            content.appendChild(endBracket);
+        });
+
+        // Wrap navigation link text in spans for hover effects
+        const navItems = document.querySelectorAll('header nav a');
+        navItems.forEach(item => {
+            const text = item.textContent;
+            item.innerHTML = `<span>${text}</span>`;
+        });
     }
 
     /**
