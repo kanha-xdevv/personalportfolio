@@ -820,11 +820,13 @@ nav ul li a:hover {
 .otp-container {
     max-width: 450px;
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0.2);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-lg);
+    background: linear-gradient(145deg, rgba(30, 37, 47, 0.6), rgba(22, 27, 34, 0.8));
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
     box-shadow: var(--shadow-lg);
-    border: 1px solid rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .form-group {
