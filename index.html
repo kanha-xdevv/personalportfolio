@@ -382,12 +382,13 @@
                         <div id="otp-form" class="active">
                             <div class="form-group">
                                 <label for="email">Your Email:</label>
-                                <input type="email" id="email" placeholder="Enter your email" required>
+                                <input type="email" id="email" placeholder="Enter your professional email" required>
                             </div>
-                            <button id="request-otp" class="btn primary-btn">Request OTP</button>
+                            <button id="request-otp" class="btn primary-btn"><i class="fas fa-paper-plane"></i> Request OTP</button>
                         </div>
                         
                         <div id="otp-verification" class="hidden">
+                            <p>Please enter the 4-digit code sent to your email</p>
                             <div class="otp-inputs">
                                 <input type="text" maxlength="1" class="otp-input" data-index="1">
                                 <input type="text" maxlength="1" class="otp-input" data-index="2">
@@ -395,14 +396,17 @@
                                 <input type="text" maxlength="1" class="otp-input" data-index="4">
                             </div>
                             <div class="otp-actions">
-                                <button id="verify-otp" class="btn primary-btn">Verify</button>
-                                <button id="resend-otp" class="btn secondary-btn">Resend OTP</button>
+                                <button id="verify-otp" class="btn primary-btn"><i class="fas fa-check"></i> Verify</button>
+                                <button id="resend-otp" class="btn secondary-btn"><i class="fas fa-redo"></i> Resend</button>
                             </div>
                         </div>
                         
                         <div id="resume-download" class="hidden">
-                            <p>Thank you for verifying! You can now download my resume.</p>
-                            <a href="#" id="download-btn" class="btn primary-btn">
+                            <div class="success-animation">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <p>Thank you for verifying your email. You can now download my resume.</p>
+                            <a href="#" id="download-btn" class="btn primary-btn" download>
                                 <i class="fas fa-download"></i> Download Resume
                             </a>
                         </div>
@@ -579,12 +583,16 @@
             
             <div class="footer-social">
                 <h3>Connect With Me</h3>
-                <div class="social-icons">
-                    <a href="https://github.com/johndoe" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/johndoe" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/johndoe" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://medium.com/@johndoe" target="_blank"><i class="fab fa-medium"></i></a>
-                    <a href="https://dev.to/johndoe" target="_blank"><i class="fab fa-dev"></i></a>
+                <p>Follow me on social media to stay updated with my latest projects and tech adventures.</p>
+                <div class="footer-social-links">
+                    <a href="https://github.com/johndoe" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/johndoe" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com/johndoe" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/johndoe" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://codepen.io/johndoe" target="_blank" aria-label="CodePen"><i class="fab fa-codepen"></i></a>
+                    <a href="https://dev.to/johndoe" target="_blank" aria-label="Dev.to"><i class="fab fa-dev"></i></a>
+                    <a href="https://medium.com/@johndoe" target="_blank" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
+                    <a href="https://dribbble.com/johndoe" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
                 </div>
             </div>
         </div>
