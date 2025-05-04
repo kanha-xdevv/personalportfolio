@@ -579,6 +579,8 @@ nav ul li a i {
     color: var(--tertiary-color);
     font-size: 1.1rem;
     transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 8px;
 }
 
 nav ul li a:hover {

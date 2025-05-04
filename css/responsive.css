@@ -269,6 +269,11 @@
     }
 }
 
+/* Hide mobile controls on larger screens */
+.mobile-controls {
+    display: none;
+}
+
 /* Menu toggle for mobile */
 @media only screen and (max-width: 768px) {
     .mobile-controls {
