@@ -1,0 +1,348 @@
+/* 
+* Portfolio Website Responsive Styles
+* Author: John Doe
+*/
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Extra small devices (phones, 576px and down) */
+@media only screen and (max-width: 576px) {
+    :root {
+        --font-xxxl: 2rem;
+        --font-xxl: 1.75rem;
+        --font-xl: 1.5rem;
+        --font-lg: 1.25rem;
+    }
+    
+    .container {
+        width: 95%;
+        padding: var(--spacing-md);
+    }
+    
+    /* Header and Navigation */
+    #header {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background-color: var(--card-background);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition-normal);
+        z-index: var(--z-modal);
+    }
+    
+    nav ul.active {
+        right: 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+        z-index: var(--z-modal);
+    }
+    
+    nav ul li a {
+        padding: var(--spacing-md);
+    }
+    
+    nav ul li a span {
+        display: inline-block;
+    }
+    
+    .logo a span {
+        display: none;
+    }
+    
+    /* Home Section */
+    .home-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .profile-image {
+        flex: 0 0 300px;
+    }
+    
+    .image-container {
+        height: 300px;
+    }
+    
+    .home-buttons {
+        justify-content: center;
+    }
+    
+    /* Skills Section */
+    .skills-filter, .view-toggle {
+        flex-wrap: wrap;
+    }
+    
+    /* Timeline */
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-dot {
+        left: 15px;
+    }
+    
+    .timeline-date {
+        position: relative;
+        top: -30px;
+        left: 0 !important;
+        right: auto !important;
+        margin-bottom: 15px;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        align-items: center;
+    }
+    
+    .footer-links ul {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    /* Back to Top */
+    #back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Small devices (landscape phones, 576px to 768px) */
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    :root {
+        --font-xxxl: 2.5rem;
+    }
+    
+    .container {
+        width: 90%;
+    }
+    
+    /* Header and Navigation */
+    nav ul li a span {
+        display: none;
+    }
+    
+    nav ul li a i {
+        font-size: var(--font-lg);
+    }
+    
+    /* Home Section */
+    .home-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: var(--spacing-xl);
+    }
+    
+    .home-buttons {
+        justify-content: center;
+    }
+    
+    /* Timeline */
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-dot {
+        left: 15px;
+    }
+    
+    .timeline-date {
+        position: relative;
+        top: -30px;
+        left: 0 !important;
+        right: auto !important;
+        margin-bottom: 15px;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+}
+
+/* Medium devices (tablets, 768px to 992px) */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .container {
+        width: 85%;
+    }
+    
+    /* Header and Navigation */
+    nav ul li a span {
+        display: none;
+    }
+    
+    nav ul li a:hover span {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--card-background);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: var(--border-radius-sm);
+        font-size: var(--font-xs);
+        white-space: nowrap;
+    }
+    
+    /* Home Section */
+    .profile-image {
+        flex: 0 0 300px;
+    }
+    
+    /* Skills Section */
+    .skills-filter button, .view-toggle button {
+        font-size: var(--font-sm);
+    }
+    
+    /* Timeline */
+    .timeline-item:nth-child(odd) .timeline-date {
+        right: -120px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+        left: -120px;
+    }
+}
+
+/* Large devices (desktops, 992px to 1200px) */
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    .container {
+        width: 80%;
+    }
+    
+    /* Header and Navigation */
+    nav ul {
+        gap: var(--spacing-sm);
+    }
+    
+    /* Home Section */
+    .profile-image {
+        flex: 0 0 350px;
+    }
+    
+    .image-container {
+        height: 350px;
+    }
+}
+
+/* Menu toggle for mobile */
+@media only screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
+        z-index: var(--z-modal);
+    }
+    
+    .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--text-color);
+        border-radius: var(--border-radius-sm);
+        transition: var(--transition-normal);
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+    
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background-color: var(--card-background);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition-normal);
+        z-index: var(--z-fixed);
+    }
+    
+    nav ul.active {
+        right: 0;
+    }
+    
+    nav ul li {
+        margin: var(--spacing-sm) 0;
+    }
+    
+    nav ul li a {
+        padding: var(--spacing-sm) var(--spacing-lg);
+    }
+    
+    nav ul li a span {
+        display: inline-block;
+        margin-left: var(--spacing-sm);
+    }
+}
+
+/* OTP inputs responsiveness */
+@media only screen and (max-width: 400px) {
+    .otp-inputs {
+        gap: var(--spacing-xs);
+    }
+    
+    .otp-input {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,246 @@
+/* 
+* Portfolio Website Animation Styles
+* Author: John Doe
+*/
+
+/* ===== KEYFRAMES ===== */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    from { opacity: 0.5; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.animate-text {
+    opacity: 0;
+    animation: slideInLeft 0.5s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.8s;
+}
+
+/* ===== LOADING ANIMATION ===== */
+.loaded .loading-container {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#loading-logo {
+    animation: rotate 2s infinite linear, pulse 1.5s infinite alternate;
+}
+
+#logo-path {
+    animation: dash 2s ease-in-out infinite alternate;
+}
+
+/* ===== BACKGROUND PARTICLES ===== */
+.particle:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    width: 80px;
+    height: 80px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    width: 60px;
+    height: 60px;
+    animation: float 7s ease-in-out infinite 1s;
+}
+
+.particle:nth-child(3) {
+    top: 40%;
+    left: 40%;
+    width: 100px;
+    height: 100px;
+    animation: float 8s ease-in-out infinite 2s;
+}
+
+.particle:nth-child(4) {
+    top: 80%;
+    left: 10%;
+    width: 50px;
+    height: 50px;
+    animation: float 5s ease-in-out infinite 0.5s;
+}
+
+.particle:nth-child(5) {
+    top: 10%;
+    left: 70%;
+    width: 70px;
+    height: 70px;
+    animation: float 9s ease-in-out infinite 1.5s;
+}
+
+.particle:nth-child(6) {
+    top: 30%;
+    left: 90%;
+    width: 40px;
+    height: 40px;
+    animation: float 7s ease-in-out infinite 2.5s;
+}
+
+.particle:nth-child(7) {
+    top: 70%;
+    left: 30%;
+    width: 90px;
+    height: 90px;
+    animation: float 8s ease-in-out infinite 1s;
+}
+
+.particle:nth-child(8) {
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    animation: float 6s ease-in-out infinite 0s;
+}
+
+.particle:nth-child(9) {
+    top: 90%;
+    left: 60%;
+    width: 50px;
+    height: 50px;
+    animation: float 5s ease-in-out infinite 1.5s;
+}
+
+.particle:nth-child(10) {
+    top: 20%;
+    left: 30%;
+    width: 70px;
+    height: 70px;
+    animation: float 7s ease-in-out infinite 2s;
+}
+
+/* ===== SKILL BAR ANIMATION ===== */
+.skill-bar {
+    width: 0;
+    transition: width 1.5s ease-in-out;
+}
+
+/* ===== TIMELINE ANIMATION ===== */
+.timeline-item {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== HOVER ANIMATIONS ===== */
+.btn {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::after {
+    height: 100%;
+}
+
+.profile-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-link, .social-icons a {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+[data-scroll] {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-scroll="fade-in"] {
+    transform: translateY(50px);
+}
+
+[data-scroll="fade-left"] {
+    transform: translateX(-50px);
+}
+
+[data-scroll="fade-right"] {
+    transform: translateX(50px);
+}
+
+[data-scroll].scrolled {
+    opacity: 1;
+    transform: translate(0);
+}

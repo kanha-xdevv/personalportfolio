@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | John Doe</title>
+    <meta name="description" content="Personal portfolio website showcasing skills, projects, and professional journey">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-container">
+        <div class="loading-animation">
+            <svg id="loading-logo" viewBox="0 0 100 100" width="100" height="100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--accent-color)" stroke-width="2" />
+                <path id="logo-path" d="M30,50 L45,65 L70,35" fill="none" stroke="var(--accent-color)" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="100" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="#home">
+                <svg id="logo" viewBox="0 0 100 100" width="40" height="40">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--accent-color)" stroke-width="2" />
+                    <path d="M30,50 L45,65 L70,35" fill="none" stroke="var(--accent-color)" stroke-width="3" />
+                </svg>
+                <span>John Doe</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="#about"><i class="fas fa-user"></i><span>About</span></a></li>
+                <li><a href="#skills"><i class="fas fa-code"></i><span>Skills</span></a></li>
+                <li><a href="#journey"><i class="fas fa-road"></i><span>Journey</span></a></li>
+                <li><a href="#education"><i class="fas fa-graduation-cap"></i><span>Education</span></a></li>
+                <li><a href="#resume"><i class="fas fa-file-alt"></i><span>Resume</span></a></li>
+                <li><a href="#profiles"><i class="fas fa-globe"></i><span>Profiles</span></a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+            </ul>
+        </nav>
+        <div class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="container glass-card">
+                <div class="home-content">
+                    <div class="text-content">
+                        <h1 class="animate-text">Hello, I'm <span class="highlight">John Doe</span></h1>
+                        <h2 class="animate-text delay-1">Software Developer</h2>
+                        <p class="animate-text delay-2">Passionate about creating elegant solutions to complex problems.</p>
+                        <div class="home-buttons animate-text delay-3">
+                            <a href="#contact" class="btn primary-btn">Contact Me</a>
+                            <a href="#about" class="btn secondary-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="profile-image animate-fade-in">
+                        <div class="image-outline"></div>
+                        <div class="image-container">
+                            <!-- We're using a div with background-image instead of an actual image tag -->
+                            <div class="profile-photo" role="img" aria-label="Profile photo of John Doe"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container glass-card">
+                <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a passionate software developer with expertise in web technologies and problem-solving. My journey in tech began when I wrote my first line of code at 15, and I've been hooked ever since.</p>
+                        <p>I believe in creating software that not only works efficiently but also provides an exceptional user experience. My approach combines technical expertise with creative thinking to deliver innovative solutions.</p>
+                        <p>When I'm not coding, you can find me hiking in the mountains, reading science fiction, or experimenting with new recipes in the kitchen.</p>
+
+                        <div class="about-details">
+                            <div class="detail-item">
+                                <span class="label">Name:</span>
+                                <span class="value">John Doe</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Email:</span>
+                                <span class="value">john.doe@example.com</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">From:</span>
+                                <span class="value">San Francisco, CA</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Expertise:</span>
+                                <span class="value">Full Stack Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container glass-card">
+                <h2 class="section-title"><i class="fas fa-code"></i> Skills</h2>
+
+                <div class="skills-filter">
+                    <button class="filter-btn active" data-filter="all">All Skills</button>
+                    <button class="filter-btn" data-filter="technical">Technical</button>
+                    <button class="filter-btn" data-filter="soft">Soft Skills</button>
+                </div>
+
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="bar">Bar View</button>
+                    <button class="view-btn" data-view="radar">Radar View</button>
+                </div>
+
+                <div class="skills-container">
+                    <!-- Bar view container -->
+                    <div class="skills-view active" id="bar-view">
+                        <div class="skill-category" data-category="technical">
+                            <h3>Frontend Development</h3>
+                            <div class="skill-item">
+                                <div class="skill-name">HTML5</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="90"></div>
+                                </div>
+                                <div class="skill-percentage">90%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">CSS3</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="85"></div>
+                                </div>
+                                <div class="skill-percentage">85%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">JavaScript</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="80"></div>
+                                </div>
+                                <div class="skill-percentage">80%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">React</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="75"></div>
+                                </div>
+                                <div class="skill-percentage">75%</div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category" data-category="technical">
+                            <h3>Backend Development</h3>
+                            <div class="skill-item">
+                                <div class="skill-name">Node.js</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="75"></div>
+                                </div>
+                                <div class="skill-percentage">75%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Python</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="70"></div>
+                                </div>
+                                <div class="skill-percentage">70%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">MongoDB</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="65"></div>
+                                </div>
+                                <div class="skill-percentage">65%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">SQL</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="60"></div>
+                                </div>
+                                <div class="skill-percentage">60%</div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category" data-category="soft">
+                            <h3>Soft Skills</h3>
+                            <div class="skill-item">
+                                <div class="skill-name">Problem Solving</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="90"></div>
+                                </div>
+                                <div class="skill-percentage">90%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Communication</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="85"></div>
+                                </div>
+                                <div class="skill-percentage">85%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Teamwork</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="80"></div>
+                                </div>
+                                <div class="skill-percentage">80%</div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Leadership</div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" data-percentage="75"></div>
+                                </div>
+                                <div class="skill-percentage">75%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Radar view container -->
+                    <div class="skills-view" id="radar-view">
+                        <canvas id="radar-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Timeline Section -->
+        <section id="journey" class="section">
+            <div class="container glass-card">
+                <h2 class="section-title"><i class="fas fa-road"></i> Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Senior Software Engineer</h3>
+                            <h4>Tech Innovations Inc.</h4>
+                            <p>Leading a team of developers to create cutting-edge web applications. Implementing modern architecture patterns and mentoring junior developers.</p>
+                            <div class="timeline-tags">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>AWS</span>
+                                <span>Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2019 - 2022</div>
+                        <div class="timeline-content">
+                            <h3>Software Developer</h3>
+                            <h4>Digital Solutions LLC</h4>
+                            <p>Developed responsive web applications for various clients. Collaborated with UX/UI designers to implement visually appealing and functional interfaces.</p>
+                            <div class="timeline-tags">
+                                <span>JavaScript</span>
+                                <span>CSS</span>
+                                <span>React</span>
+                                <span>MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2017 - 2019</div>
+                        <div class="timeline-content">
+                            <h3>Junior Web Developer</h3>
+                            <h4>WebCraft Studios</h4>
+                            <p>Started my professional journey developing websites and small web applications. Focused on learning best practices and improving coding skills.</p>
+                            <div class="timeline-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>PHP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Timeline Section -->
+        <section id="education" class="section">
+            <div class="container glass-card">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2015 - 2017</div>
+                        <div class="timeline-content">
+                            <h3>Master of Computer Science</h3>
+                            <h4>Stanford University</h4>
+                            <p>Specialized in Artificial Intelligence and Machine Learning. Graduated with honors and completed a thesis on neural networks for image recognition.</p>
+                            <div class="timeline-tags">
+                                <span>Machine Learning</span>
+                                <span>Algorithm Design</span>
+                                <span>Data Structures</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2011 - 2015</div>
+                        <div class="timeline-content">
+                            <h3>Bachelor of Science in Computer Science</h3>
+                            <h4>University of California, Berkeley</h4>
+                            <p>Focused on software engineering and web development. Participated in numerous hackathons and coding competitions.</p>
+                            <div class="timeline-tags">
+                                <span>Programming</span>
+                                <span>Web Development</span>
+                                <span>Database Systems</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2010 - 2011</div>
+                        <div class="timeline-content">
+                            <h3>Web Development Certification</h3>
+                            <h4>Code Academy</h4>
+                            <p>Completed an intensive program covering fundamentals of web development and design.</p>
+                            <div class="timeline-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section">
+            <div class="container glass-card">
+                <h2 class="section-title"><i class="fas fa-file-alt"></i> Resume</h2>
+                <div class="resume-content">
+                    <p>My detailed resume is available for download after verification. Please enter the OTP sent to your email to access it.</p>
+                    
+                    <div class="otp-container">
+                        <div id="otp-form" class="active">
+                            <div class="form-group">
+                                <label for="email">Your Email:</label>
+                                <input type="email" id="email" placeholder="Enter your email" required>
+                            </div>
+                            <button id="request-otp" class="btn primary-btn">Request OTP</button>
+                        </div>
+                        
+                        <div id="otp-verification" class="hidden">
+                            <div class="otp-inputs">
+                                <input type="text" maxlength="1" class="otp-input" data-index="1">
+                                <input type="text" maxlength="1" class="otp-input" data-index="2">
+                                <input type="text" maxlength="1" class="otp-input" data-index="3">
+                                <input type="text" maxlength="1" class="otp-input" data-index="4">
+                            </div>
+                            <div class="otp-actions">
+                                <button id="verify-otp" class="btn primary-btn">Verify</button>
+                                <button id="resend-otp" class="btn secondary-btn">Resend OTP</button>
+                            </div>
+                        </div>
+                        
+                        <div id="resume-download" class="hidden">
+                            <p>Thank you for verifying! You can now download my resume.</p>
+                            <a href="#" id="download-btn" class="btn primary-btn">
+                                <i class="fas fa-download"></i> Download Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Profiles Section -->
+        <section id="profiles" class="section">
+            <div class="container glass-card">
+                <h2 class="section-title"><i class="fas fa-globe"></i> Profiles</h2>
+                
+                <div class="profiles-container">
+                    <div class="profile-card github-card">
+                        <div class="profile-header">
+                            <i class="fab fa-github"></i>
+                            <h3>GitHub</h3>
+                        </div>
+                        <div class="profile-body" id="github-data">
+                            <div class="profile-loading">
+                                <div class="spinner"></div>
+                                <p>Loading GitHub data...</p>
+                            </div>
+                        </div>
+                        <div class="profile-footer">
+                            <a href="https://github.com/johndoe" target="_blank" class="btn secondary-btn">View Profile</a>
+                        </div>
+                    </div>
+
+                    <div class="profile-card leetcode-card">
+                        <div class="profile-header">
+                            <svg class="leetcode-icon" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z" fill="var(--text-color)"></path>
+                            </svg>
+                            <h3>LeetCode</h3>
+                        </div>
+                        <div class="profile-body" id="leetcode-data">
+                            <div class="profile-loading">
+                                <div class="spinner"></div>
+                                <p>Loading LeetCode data...</p>
+                            </div>
+                        </div>
+                        <div class="profile-footer">
+                            <a href="https://leetcode.com/johndoe" target="_blank" class="btn secondary-btn">View Profile</a>
+                        </div>
+                    </div>
+
+                    <div class="profile-card social-card">
+                        <div class="profile-header">
+                            <i class="fas fa-share-alt"></i>
+                            <h3>Social Profiles</h3>
+                        </div>
+                        <div class="profile-body social-links">
+                            <a href="https://linkedin.com/in/johndoe" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://twitter.com/johndoe" target="_blank" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="https://medium.com/@johndoe" target="_blank" class="social-link">
+                                <i class="fab fa-medium"></i>
+                                <span>Medium</span>
+                            </a>
+                            <a href="https://dev.to/johndoe" target="_blank" class="social-link">
+                                <i class="fab fa-dev"></i>
+                                <span>Dev.to</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container glass-card">
+                <h2 class="section-title"><i class="fas fa-envelope"></i> Contact Me</h2>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>Feel free to reach out to me for collaborations, job opportunities, or just to say hello.</p>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>john.doe@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>San Francisco, CA</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>Available upon request</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-icons">
+                            <a href="https://github.com/johndoe" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/johndoe" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://twitter.com/johndoe" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Me a Message</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" placeholder="Your Name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" placeholder="Your Email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" placeholder="Subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn primary-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg id="footer-logo" viewBox="0 0 100 100" width="50" height="50">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--accent-color)" stroke-width="2" />
+                    <path d="M30,50 L45,65 L70,35" fill="none" stroke="var(--accent-color)" stroke-width="3" />
+                </svg>
+                <h3>John Doe</h3>
+                <p>Software Engineer & Web Developer</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#journey">Journey</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#profiles">Profiles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h3>Connect With Me</h3>
+                <div class="social-icons">
+                    <a href="https://github.com/johndoe" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/johndoe" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/johndoe" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://medium.com/@johndoe" target="_blank"><i class="fab fa-medium"></i></a>
+                    <a href="https://dev.to/johndoe" target="_blank"><i class="fab fa-dev"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 John Doe. All Rights Reserved.</p>
+            <p>Made with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/skills.js"></script>
+    <script src="js/resume.js"></script>
+    <script src="js/profiles.js"></script>
+</body>
+</html>
