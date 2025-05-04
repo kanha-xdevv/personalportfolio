@@ -27,6 +27,14 @@
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
     
+    /* Z-indices */
+    --z-back: -1;
+    --z-normal: 1;
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+    --z-toast: 2000;
+    
     /* Borders */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
@@ -2408,7 +2416,15 @@ nav ul li a.active span {
 
 #contact-form .form-group {
     position: relative;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+}
+
+#contact-form .input-wrapper {
+    flex: 1;
+    position: relative;
 }
 
 #contact-form .form-group:last-of-type {
@@ -2421,6 +2437,13 @@ nav ul li a.active span {
     color: var(--tertiary-color);
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#contact-form .form-group.focus label {
+    transform: translateX(5px);
+    color: var(--accent-color);
 }
 
 #contact-form label::before {
@@ -2429,7 +2452,7 @@ nav ul li a.active span {
     font-style: italic;
 }
 
-#contact-form input, #contact-form textarea {
+#contact-form .form-input {
     width: 100%;
     padding: 1rem;
     background-color: rgba(15, 14, 22, 0.6);
@@ -2440,6 +2463,158 @@ nav ul li a.active span {
     transition: all 0.3s ease;
     resize: vertical;
     line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+.input-focus-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: rgba(127, 90, 240, 0.05);
+    border-radius: 6px;
+    z-index: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.textarea-bg {
+    height: 100%;
+}
+
+.form-group.focus .input-focus-bg {
+    transform: scaleX(1);
+}
+
+/* Validation styling */
+.validation-icon {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.1rem;
+    margin-left: var(--spacing-sm);
+}
+
+.success-icon, .error-icon {
+    display: none;
+    font-size: 1.2rem;
+}
+
+.form-group.success .success-icon {
+    display: block;
+    color: #4CAF50;
+}
+
+.form-group.error .error-icon {
+    display: block;
+    color: #FF5252;
+}
+
+.form-group.success .form-input {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+}
+
+.form-group.error .form-input {
+    border-color: #FF5252;
+    box-shadow: 0 0 10px rgba(255, 82, 82, 0.2);
+}
+
+.error-message {
+    color: #FF5252;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    transition: all 0.3s ease;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.form-group.error .error-message {
+    height: auto;
+    opacity: 1;
+    margin-top: 0.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+/* Form submit animation */
+.form-submit-wrapper {
+    position: relative;
+    margin-top: var(--spacing-xl);
+}
+
+.submit-animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.submit-animation-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.submit-animation-ring {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(127, 90, 240, 0.3);
+    border-top: 3px solid var(--tertiary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.submit-animation-circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(127, 90, 240, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.7); opacity: 0.5; }
+    50% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(0.7); opacity: 0.5; }
+}
+
+.submit-animation-message {
+    position: absolute;
+    bottom: -30px;
+    color: var(--tertiary-color);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards 0.5s;
+    font-family: 'Courier New', monospace;
+}
+
+.submit-animation-container.success .submit-animation-ring {
+    border-color: rgba(76, 175, 80, 0.3);
+    border-top-color: #4CAF50;
+}
+
+.submit-animation-container.success .submit-animation-circle {
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.2) 0%, transparent 70%);
+}
+
+.submit-animation-container.success .submit-animation-message {
+    color: #4CAF50;
 }
 
 #contact-form input:focus, #contact-form textarea:focus {
@@ -2690,6 +2865,92 @@ nav ul li a.active span {
 #back-to-top:hover::after {
     font-size: 0.75rem;
     bottom: 8px;
+}
+
+/* Toast notifications */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: var(--z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+}
+
+.toast {
+    background: rgba(25, 23, 36, 0.9);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border-left: 4px solid var(--tertiary-color);
+    overflow: hidden;
+    cursor: pointer;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast.success {
+    border-left-color: #4CAF50;
+}
+
+.toast.error {
+    border-left-color: #FF5252;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-icon {
+    font-size: 1.5rem;
+}
+
+.toast.success .toast-icon {
+    color: #4CAF50;
+}
+
+.toast.error .toast-icon {
+    color: #FF5252;
+}
+
+.toast.info .toast-icon {
+    color: var(--tertiary-color);
+}
+
+.toast-message {
+    flex: 1;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--tertiary-color);
+    width: 100%;
+    transition: width 0.1s linear;
+}
+
+.toast.success .toast-progress {
+    background: #4CAF50;
+}
+
+.toast.error .toast-progress {
+    background: #FF5252;
 }
 
 /* Developer-style Navigation Enhancement */
